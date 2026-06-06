@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yurah Padilla · Nutrióloga Geriátrica</title>
+  <meta name="description" content="Especialista en nutrición para el envejecimiento saludable y salud de la mujer — perimenopausia, menopausia y etapa geriátrica. CDMX.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage: #7A9E8E;
+      --sage-light: #B5CEC5;
+      --sage-pale: #E8F0ED;
+      --cream: #F7F3EE;
+      --warm: #E8DDD0;
+      --earth: #A08060;
+      --dark: #1C2820;
+      --mid: #4A5E55;
+      --text: #2E3D36;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(247,243,238,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(122,158,142,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 400; letter-spacing: 0.08em;
+      color: var(--dark);
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 6rem;
+      position: relative;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; top: 15%; right: -1px; bottom: 15%; width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--sage-light), transparent);
+    }
+    .hero-tag {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-tag::before {
+      content: ''; display: block; width: 2rem; height: 1px; background: var(--sage);
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--dark); margin-bottom: 0.5rem;
+    }
+    .hero-name em { font-style: italic; color: var(--sage); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 300; font-style: italic;
+      color: var(--earth); margin-bottom: 2rem; letter-spacing: 0.03em;
+    }
+    .hero-desc {
+      font-size: 0.95rem; line-height: 1.8; color: var(--mid);
+      max-width: 420px; margin-bottom: 3rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      padding: 0.9rem 2rem;
+      background: var(--dark); color: var(--cream);
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .hero-cta:hover { background: var(--sage); }
+    .hero-cta-arrow { font-size: 1rem; transition: transform 0.3s; }
+    .hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
+
+    .hero-right {
+      background: var(--sage-pale);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 5rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; top: -10%; right: -10%; width: 60%; padding-bottom: 60%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122,158,142,0.2) 0%, transparent 70%);
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      width: 100%; max-width: 360px;
+    }
+    .stat-card {
+      background: white; padding: 2rem 1.8rem;
+      opacity: 0; animation: fadeUp 0.6s forwards;
+    }
+    .stat-card:nth-child(1) { animation-delay: 0.1s; }
+    .stat-card:nth-child(2) { animation-delay: 0.2s; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    .stat-card:nth-child(4) { animation-delay: 0.4s; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 300; color: var(--sage);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--mid); margin-top: 0.4rem; line-height: 1.4; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ESPECIALIDADES */
+    .section { padding: 7rem 6rem; }
+    .section-tag {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-tag::before {
+      content: ''; display: block; width: 2rem; height: 1px; background: var(--sage);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300; color: var(--dark); margin-bottom: 1rem; line-height: 1.2;
+    }
+    .section-sub {
+      font-size: 0.95rem; color: var(--mid); max-width: 520px;
+      line-height: 1.8; margin-bottom: 4rem;
+    }
+
+    .especialidades-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .esp-card {
+      background: white; padding: 2.5rem 2rem;
+      transition: all 0.3s; cursor: default; position: relative; overflow: hidden;
+    }
+    .esp-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--sage); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .esp-card:hover::before { transform: scaleX(1); }
+    .esp-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+    .esp-icon {
+      width: 3rem; height: 3rem; border-radius: 50%;
+      background: var(--sage-pale); display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.5rem;
+    }
+    .esp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 400; color: var(--dark); margin-bottom: 0.8rem;
+    }
+    .esp-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.7; }
+
+    /* FORMACIÓN */
+    .formacion { background: var(--dark); padding: 7rem 6rem; }
+    .formacion .section-title { color: var(--cream); }
+    .formacion .section-tag { color: var(--sage-light); }
+    .formacion .section-tag::before { background: var(--sage-light); }
+    .formacion .section-sub { color: rgba(247,243,238,0.6); }
+
+    .formacion-list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .form-item {
+      background: var(--dark); padding: 2rem 2.5rem;
+      border-left: 2px solid transparent; transition: border-color 0.3s;
+    }
+    .form-item:hover { border-left-color: var(--sage); }
+    .form-year {
+      font-size: 0.72rem; letter-spacing: 0.15em; color: var(--sage-light);
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .form-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; color: var(--cream); margin-bottom: 0.3rem;
+    }
+    .form-inst { font-size: 0.82rem; color: rgba(247,243,238,0.5); }
+
+    /* PARA QUIÉN */
+    .para-quien { padding: 7rem 6rem; background: var(--warm); }
+    .pq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .pq-text .section-title { margin-bottom: 2rem; }
+    .pq-items { display: flex; flex-direction: column; gap: 1rem; }
+    .pq-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.2rem 1.5rem; background: white;
+    }
+    .pq-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sage); flex-shrink: 0; margin-top: 0.35rem;
+    }
+    .pq-item-text { font-size: 0.9rem; color: var(--mid); line-height: 1.6; }
+    .pq-item-text strong { color: var(--dark); font-weight: 500; }
+
+    .pq-visual {
+      background: var(--sage-pale); padding: 3rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .pq-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 300; font-style: italic;
+      color: var(--dark); line-height: 1.4;
+    }
+    .pq-quote-attr { font-size: 0.78rem; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* CONTACTO */
+    .contacto { padding: 7rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+    .contacto-info .section-title { margin-bottom: 2rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .contact-label {
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage);
+    }
+    .contact-value { font-size: 1rem; color: var(--dark); }
+    .contact-value a { color: var(--dark); text-decoration: none; transition: color 0.2s; }
+    .contact-value a:hover { color: var(--sage); }
+
+    .contacto-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+    .form-field input, .form-field textarea, .form-field select {
+      border: 1px solid rgba(122,158,142,0.3);
+      background: white; padding: 0.8rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--dark);
+      outline: none; transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+      border-color: var(--sage);
+    }
+    .form-field textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      padding: 1rem 2.5rem; background: var(--sage); color: white; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--dark); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark); padding: 2.5rem 6rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; color: var(--cream); letter-spacing: 0.08em;
+    }
+    .footer-note { font-size: 0.75rem; color: rgba(247,243,238,0.4); }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 6rem 2rem 3rem; }
+      .hero-right { padding: 3rem 2rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .section, .formacion, .para-quien, .contacto { padding: 5rem 2rem; }
+      .especialidades-grid { grid-template-columns: 1fr; }
+      .formacion-list { grid-template-columns: 1fr; }
+      .pq-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contacto { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Yurah Padilla · L.N.</div>
+  <ul class="nav-links">
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#formacion">Formación</a></li>
+    <li><a href="#para-quien">Para quién</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Nutriología Clínica · CDMX</div>
+    <h1 class="hero-name">Yurah <em>Itzel</em><br>Padilla Arias</h1>
+    <p class="hero-title">Especialista en Nutrición Geriátrica y Salud de la Mujer</p>
+    <p class="hero-desc">
+      Acompaño a mujeres y adultos mayores en la segunda mitad de la vida — desde la perimenopausia hasta el envejecimiento activo — con planes de alimentación personalizados, basados en evidencia científica y profundo respeto por cada historia.
+    </p>
+    <a href="#contacto" class="hero-cta">Agendar consulta <span class="hero-cta-arrow">→</span></a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">años de experiencia clínica</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">estudiantes formados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">grados de posgrado</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">INCMNSZ</div>
+        <div class="stat-label">Doctorado en curso · Salvador Zubirán</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="section" id="especialidades">
+  <div class="section-tag">Lo que hago</div>
+  <h2 class="section-title reveal">Especialidades</h2>
+  <p class="section-sub reveal">Atención nutricional enfocada en las etapas que más transforman la vida de una persona — con la ciencia como guía y la calidez como método.</p>
+
+  <div class="especialidades-grid">
+    <div class="esp-card reveal">
+      <div class="esp-icon">🌿</div>
+      <div class="esp-title">Nutrición Geriátrica</div>
+      <p class="esp-desc">Manejo nutricional integral del adulto mayor: sarcopenia, desnutrición, control de peso, diabetes tipo 2, síndrome metabólico y polifarmacia. Planes adaptados a la realidad de cada persona.</p>
+    </div>
+    <div class="esp-card reveal">
+      <div class="esp-icon">🌸</div>
+      <div class="esp-title">Perimenopausia & Menopausia</div>
+      <p class="esp-desc">Acompañamiento nutricional en las transiciones hormonales de la mujer: composición corporal, salud ósea, control glucémico, bienestar cardiovascular y calidad de vida sostenible.</p>
+    </div>
+    <div class="esp-card reveal">
+      <div class="esp-icon">🔬</div>
+      <div class="esp-title">Envejecimiento Metabólico</div>
+      <p class="esp-desc">Prevención y tratamiento de condiciones crónicas asociadas al envejecimiento. Enfoque en hábitos sostenibles, culturalmente pertinentes y basados en evidencia científica actualizada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section class="formacion" id="formacion">
+  <div class="section-tag">Trayectoria académica</div>
+  <h2 class="section-title reveal">Formación & Certificaciones</h2>
+  <p class="section-sub reveal">Una sólida base académica y clínica al servicio de tus pacientes y los tuyos.</p>
+
+  <div class="formacion-list">
+    <div class="form-item reveal">
+      <div class="form-year">2025 – 2029 · En curso</div>
+      <div class="form-degree">Doctorado en Investigación en Medicina</div>
+      <div class="form-inst">ESM del IPN · INCMNSZ Salvador Zubirán</div>
+    </div>
+    <div class="form-item reveal">
+      <div class="form-year">2023 – 2024</div>
+      <div class="form-degree">Especialidad en Nutrición Gerontológica</div>
+      <div class="form-inst">Universidad Iberoamericana, CDMX · Cédula 15329250</div>
+    </div>
+    <div class="form-item reveal">
+      <div class="form-year">2019 – 2022</div>
+      <div class="form-degree">Maestría en Ciencias de los Alimentos y Biotecnología</div>
+      <div class="form-inst">Instituto Tecnológico de Mérida · Cédula 14218763</div>
+    </div>
+    <div class="form-item reveal">
+      <div class="form-year">2013 – 2017</div>
+      <div class="form-degree">Licenciatura en Nutrición</div>
+      <div class="form-inst">Universidad de Guadalajara · Cédula 12842451</div>
+    </div>
+    <div class="form-item reveal">
+      <div class="form-year">2024 · España</div>
+      <div class="form-degree">Certificación en Prescripción de Ejercicio para Adultos Mayores</div>
+      <div class="form-inst">Universidad de León</div>
+    </div>
+    <div class="form-item reveal">
+      <div class="form-year">2023</div>
+      <div class="form-degree">Certificación en Evaluación Cognitiva (MoCA)</div>
+      <div class="form-inst">Montreal Cognitive Assessment</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="para-quien" id="para-quien">
+  <div class="pq-grid">
+    <div class="pq-text">
+      <div class="section-tag">Mis pacientes</div>
+      <h2 class="section-title reveal">¿Para quién<br>es esta consulta?</h2>
+      <div class="pq-items">
+        <div class="pq-item reveal">
+          <div class="pq-dot"></div>
+          <div class="pq-item-text"><strong>Mujeres en perimenopausia</strong> que sienten que su cuerpo cambió y no saben cómo acompañarlo desde la alimentación.</div>
+        </div>
+        <div class="pq-item reveal">
+          <div class="pq-dot"></div>
+          <div class="pq-item-text"><strong>Mujeres en menopausia y posmenopausia</strong> que buscan cuidar su salud ósea, cardiovascular y metabólica a largo plazo.</div>
+        </div>
+        <div class="pq-item reveal">
+          <div class="pq-dot"></div>
+          <div class="pq-item-text"><strong>Adultos mayores</strong> con diabetes tipo 2, síndrome metabólico u otras condiciones crónicas que requieren un manejo nutricional especializado.</div>
+        </div>
+        <div class="pq-item reveal">
+          <div class="pq-dot"></div>
+          <div class="pq-item-text"><strong>Médicos geriatras, internistas y endocrinólogos</strong> que buscan una nutrióloga de confianza para referir a sus pacientes.</div>
+        </div>
+      </div>
+    </div>
+    <div class="pq-visual reveal">
+      <div class="pq-quote">"Envejecer bien empieza en el plato — pero también en cómo nos relacionamos con la comida a lo largo de toda la vida."</div>
+      <div class="pq-quote-attr">— Yurah Padilla, L.N.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="contacto-info">
+    <div class="section-tag">Hablemos</div>
+    <h2 class="section-title reveal">Agendar<br>consulta</h2>
+    <div class="contact-items">
+      <div class="contact-item reveal">
+        <span class="contact-label">Teléfono / WhatsApp</span>
+        <span class="contact-value"><a href="tel:3314120734">33 1412 07 34</a></span>
+      </div>
+      <div class="contact-item reveal">
+        <span class="contact-label">Correo electrónico</span>
+        <span class="contact-value"><a href="mailto:l.n.yurahpa@gmail.com">l.n.yurahpa@gmail.com</a></span>
+      </div>
+      <div class="contact-item reveal">
+        <span class="contact-label">Ubicación</span>
+        <span class="contact-value">Ciudad de México</span>
+      </div>
+      <div class="contact-item reveal">
+        <span class="contact-label">Modalidad</span>
+        <span class="contact-value">Consulta presencial · CDMX<br>Videoconsulta · Todo México</span>
+      </div>
+    </div>
+  </div>
+
+  <form class="contacto-form reveal" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-field">
+        <label>Nombre</label>
+        <input type="text" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-field">
+        <label>Teléfono</label>
+        <input type="tel" placeholder="55 0000 0000">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Correo electrónico</label>
+      <input type="email" placeholder="tu@correo.com" required>
+    </div>
+    <div class="form-field">
+      <label>Motivo de consulta</label>
+      <select>
+        <option value="">Selecciona una opción</option>
+        <option>Nutrición geriátrica</option>
+        <option>Perimenopausia</option>
+        <option>Menopausia / Posmenopausia</option>
+        <option>Diabetes tipo 2 / Síndrome metabólico</option>
+        <option>Referencia médica</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Mensaje</label>
+      <textarea placeholder="Cuéntame brevemente qué te trae aquí..."></textarea>
+    </div>
+    <button type="submit" class="form-submit">Enviar mensaje →</button>
+    <p id="form-msg" style="font-size:0.85rem;color:var(--sage);display:none;">¡Mensaje enviado! Te contactaré pronto.</p>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-logo">Yurah Itzel Padilla Arias · L.N.</div>
+  <div class="footer-note">Cédulas: Lic. Nutrición 12842451 · Maestría 14218763 · Especialidad Gerontológica 15329250 · CDMX © 2025</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-msg').style.display = 'block';
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
